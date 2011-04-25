@@ -10,7 +10,7 @@ end
 wd = File.expand_path('~/github/felixhummel.github.com/_posts')
 suffix = '.md'
 
-filename = Date.today.to_s << '-' << ARGV.join('-').downcase << suffix
+filename = Date.today.to_s << '-' << ARGV.map {|s| s.split(/\s/)}.flatten.join('-').downcase << suffix
 path = File.join(wd, filename)
 
 stub = <<-EOS
@@ -32,7 +32,7 @@ if not File.exists? path
 end
 
 # run vim
-cmd = "vim #{path} +7"
+cmd = "vim \"#{path}\" +7"
 system cmd
 
 after_edit = File.mtime(path)
