@@ -10,7 +10,7 @@ end
 wd = File.expand_path('~/github/felixhummel.github.com/_posts')
 suffix = '.md'
 
-filename = Date.today.to_s << '-' << ARGV.map {|s| s.split(/\s/)}.flatten.join('-').downcase << suffix
+filename = Date.today.to_s << '-' << ARGV.map {|s| s.split(/\s/)}.flatten.join('-').downcase.gsub(/[,]/,'_') << suffix
 path = File.join(wd, filename)
 
 stub = <<-EOS
