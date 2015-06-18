@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+if ! test -t 0; then
+  qdbus org.kde.klipper /klipper setClipboardContents "$(</dev/stdin)" > /dev/null
+else
+  qdbus org.kde.klipper /klipper getClipboardContents
+fi
+
